@@ -30,9 +30,9 @@ describe('Credit card system', async () => {
 
 
     await page.goto('http://localhost:3000/');
-    await page.waitForSelector('.container > h1');
+    await page.waitForSelector('.container > h2');
 
-    const html = await page.$eval('.container > h1', e => e.innerHTML);
+    const html = await page.$eval('.container > h2', e => e.innerHTML);
     expect(html).toBe('Credit Card System');
 
   }, 16000);

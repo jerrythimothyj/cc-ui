@@ -22,7 +22,7 @@ class CreditCard extends React.Component<Props> {
   render() {
     return (
       <div className="container">
-        <h1>Credit Card System</h1>
+        <h2>Credit Card System</h2>
         <AddCreditCard
           addCreditCard={() => this.props.addCreditCard(this.props.stagedInputData)}
           stageInputData={this.props.stageInputData}
