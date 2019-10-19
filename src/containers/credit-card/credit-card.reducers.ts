@@ -13,7 +13,7 @@ function creditCardReducer(state = initialState, action: any) {
     case CREDIT_CARD_ADD_API_ERRORED:
       return { ...state, errors: action.payload }
     case CREDIT_CARD_ADD_API_SUCCESS:
-      return { ...state, creditCards: state.creditCards.concat(action.payload) }
+      return { ...state, errors: [], stagedInputData: {}, creditCards: state.creditCards.concat(action.payload) }
     case CREDIT_CARD_STAGE_INPUT_DATA_REQUESTED:
       return { ...state, stagedInputData: { ...state.stagedInputData, [action.field]: action.value } }
     default:
