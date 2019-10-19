@@ -9,7 +9,6 @@ type Props = {
 };
 
 const AddCreditCard: React.FC<Props> = props => {
-  console.log('stagedInputData=', props.stagedInputData);
   return (
     <form>
       <div className="form-group w-25">

@@ -24,7 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,6 +44,10 @@
   },
   "devDependencies": {
     "@types/redux-logger": "^3.0.7",
+    "faker": "^4.1.0",
+    "jest": "^24.9.0",
+    "jest-cli": "^24.9.0",
+    "puppeteer": "^1.20.0",
     "redux-saga": "^1.1.1"
   }
 }
