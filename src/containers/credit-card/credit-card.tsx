@@ -11,7 +11,8 @@ type Props = {
   addCreditCard: Function;
   stageInputData: Function;
   creditCards: Array<Object>;
-  stagedInputData: Object
+  stagedInputData: Object;
+  errors: Array<string>
 };
 class CreditCard extends React.Component<Props> {
   componentDidMount() {
@@ -25,6 +26,8 @@ class CreditCard extends React.Component<Props> {
         <AddCreditCard
           addCreditCard={() => this.props.addCreditCard(this.props.stagedInputData)}
           stageInputData={this.props.stageInputData}
+          errors={this.props.errors}
+          stagedInputData={this.props.stagedInputData}
         />
         <br></br>
         <CreditCardList creditCards={this.props.creditCards} />
@@ -36,6 +39,7 @@ class CreditCard extends React.Component<Props> {
 const mapStateToProps = (state: any) => ({
   creditCards: state.creditCardReducer.creditCards,
   stagedInputData: state.creditCardReducer.stagedInputData,
+  errors: state.creditCardReducer.errors
 });
 
 const mapDispatchToProps = (dispatch: any) =>
