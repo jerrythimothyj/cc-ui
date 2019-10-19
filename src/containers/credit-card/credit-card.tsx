@@ -1,14 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getData } from "./credit-card.actions";
+import { getData, addCreditCard, stageInputData } from "./credit-card.actions";
 
 import AddCreditCard from "../../components/add-credit-card/add-credit-card";
 import CreditCardList from "../../components/credit-card-list/credit-card-list";
 import { bindActionCreators } from "redux";
 
 type Props = {
-  getData: Function,
-  creditCards: Array<Object>
+  getData: Function;
+  addCreditCard: Function;
+  stageInputData: Function;
+  creditCards: Array<Object>;
+  stagedInputData: Object
 };
 class CreditCard extends React.Component<Props> {
   componentDidMount() {
@@ -16,24 +19,27 @@ class CreditCard extends React.Component<Props> {
   }
 
   render() {
-    const { creditCards } = this.props;
     return (
       <div className="container">
         <h1>Credit Card System</h1>
-        <AddCreditCard />
+        <AddCreditCard
+          addCreditCard={() => this.props.addCreditCard(this.props.stagedInputData)}
+          stageInputData={this.props.stageInputData}
+        />
         <br></br>
-        <CreditCardList creditCards={creditCards} />
+        <CreditCardList creditCards={this.props.creditCards} />
       </div>
     );
   }
 }
 
 const mapStateToProps = (state: any) => ({
-    creditCards: state.creditCardReducer.creditCards
-  });
+  creditCards: state.creditCardReducer.creditCards,
+  stagedInputData: state.creditCardReducer.stagedInputData,
+});
 
-
-const mapDispatchToProps = (dispatch: any) => bindActionCreators({ getData }, dispatch)
+const mapDispatchToProps = (dispatch: any) =>
+  bindActionCreators({ getData, addCreditCard, stageInputData }, dispatch);
 
 export default connect(
   mapStateToProps,
