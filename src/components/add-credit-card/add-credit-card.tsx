@@ -1,22 +1,55 @@
 import React from "react";
 
-const AddCreditCard: React.FC = () => {
+type Props = {
+  addCreditCard: Function;
+  stageInputData: Function;
+};
+
+
+const AddCreditCard: React.FC<Props> = props => {
   return (
-      <form>
-        <div className="form-group w-25">
-          <label htmlFor="name">Name</label>
-          <input type="text" className="form-control" id="name" />
-        </div>
-        <div className="form-group w-25">
-          <label htmlFor="cardNumber">Card Number</label>
-          <input type="text" className="form-control" id="cardNumber" />
-        </div>
-        <div className="form-group w-25">
-          <label htmlFor="limit">Limit</label>
-          <input type="text" className="form-control" id="limit" />
-        </div>
-        <button type="submit" className="btn btn-primary">Add</button>
-      </form>      
+    <form>
+      <div className="form-group w-25">
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          className="form-control"
+          id="name"
+          onChange={event => {
+            props.stageInputData("name", event.target.value);
+          }}
+        />
+      </div>
+      <div className="form-group w-25">
+        <label htmlFor="number">Card Number</label>
+        <input
+          type="text"
+          className="form-control"
+          id="number"
+          onChange={event => {
+            props.stageInputData("number", event.target.value);
+          }}
+        />
+      </div>
+      <div className="form-group w-25">
+        <label htmlFor="limit">Limit</label>
+        <input
+          type="text"
+          className="form-control"
+          id="limit"
+          onChange={event => {
+            props.stageInputData("limit", event.target.value);
+          }}
+        />
+      </div>
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => props.addCreditCard()}
+      >
+        Add
+      </button>
+    </form>
   );
 };
 
