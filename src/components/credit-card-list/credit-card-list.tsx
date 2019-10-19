@@ -1,30 +1,32 @@
 import React from "react";
+import * as R from "ramda";
 
-const CreditCardList: React.FC = () => {
+type Props = {
+  creditCards: Array<Object>
+}
+
+const CreditCardList: React.FC<Props> = (props) => {
   return (
-    
-      <table className="table table-bordered">
-        <tbody>
-          <tr>
-            <td className="bg-light">Name</td>
-            <td className="bg-light">Card Number</td>
-            <td className="bg-light">Balance</td>
-            <td className="bg-light">Limit</td>
-          </tr>
-          <tr>
-            <td>Alice</td>
-            <td>1111 2222 3333 4444</td>
-            <td>£-1045</td>
-            <td>£2000</td>
-          </tr>
-          <tr>
-            <td>Bob</td>
-            <td>4444 3333 2222 1111</td>
-            <td>£10.24</td>
-            <td>£2000</td>
-          </tr>
-        </tbody>
-      </table>
+    <table className="table table-bordered">
+      <tbody>
+        <tr>
+          <td className="bg-light">Name</td>
+          <td className="bg-light">Card Number</td>
+          <td className="bg-light">Balance</td>
+          <td className="bg-light">Limit</td>
+        </tr>
+        {R.map((creditCard:any) => {
+          return (
+            <tr key={creditCard.id}>
+              <td>{creditCard.name}</td>
+              <td>{creditCard.number}</td>
+              <td>£{creditCard.balance}</td>
+              <td>£{creditCard.limit}</td>
+            </tr>
+          );
+        })(props.creditCards)}
+      </tbody>
+    </table>
   );
 };
 
